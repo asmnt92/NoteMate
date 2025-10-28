@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoteMate | Smart Note App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <!-- 🌟 Navbar -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-bold text-blue-600 flex items-center gap-1">
+        📝 <span class="text-gray-800">NoteMate</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 transition">Dashboard</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 transition">About</a>
+      </nav>
+
+      <!-- Sign In Button -->
+      <a href="#"
+         class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+        Sign In
+      </a>
+    </div>
+  </header>
+
+  <!-- 🧾 Hero Section -->
+  <section class="flex-grow flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-r from-blue-50 to-blue-100">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4 leading-tight">
+      Organize Your Ideas <br class="hidden sm:block" /> with <span class="text-blue-600">NoteMate</span>
+    </h1>
+    <p class="text-gray-600 max-w-2xl mb-8">
+      Capture your thoughts, organize your projects, and stay focused — all in one powerful note-taking app.  
+      Simple, secure, and accessible anywhere.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+        {% if user.is_authenticated  %}
+                <a href="#"
+         class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Go to Dashboard
+      </a>
+      {% else %}
+            <a href="#"
+         class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+        Sign In
+      </a>
+        {% endif %}
+        
+
+      <a href="#"
+         class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
+        Learn More
+      </a>
+    </div>
+  </section>
+
+  <!-- ✨ Features Section -->
+  <section class="py-12 px-6 max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <div class="text-blue-600 text-4xl mb-3">🧩</div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">Organize Effortlessly</h3>
+      <p class="text-gray-600 text-sm">Group your notes into folders and tags — stay clutter-free and efficient.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <div class="text-blue-600 text-4xl mb-3">☁️</div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">Sync Everywhere</h3>
+      <p class="text-gray-600 text-sm">Access your notes on any device, anywhere with automatic cloud sync.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <div class="text-blue-600 text-4xl mb-3">🔒</div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">Private & Secure</h3>
+      <p class="text-gray-600 text-sm">Your ideas are safe with end-to-end encryption and secure storage.</p>
+    </div>
+  </section>
+
+  <!-- 🧭 Footer -->
+  <footer class="bg-white shadow-inner mt-auto">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between text-gray-500 text-sm">
+      <p>© 2025 NoteMate. All rights reserved.</p>
+      <div class="flex space-x-4 mt-2 sm:mt-0">
+        <a href="#" class="hover:text-blue-600">Privacy</a>
+        <a href="#" class="hover:text-blue-600">Terms</a>
+        <a href="#" class="hover:text-blue-600">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
