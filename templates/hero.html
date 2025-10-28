@@ -1,0 +1,40 @@
+{% load static %}
+<section class="mt-12 md:mt-0 relative min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-900 text-white">
+
+  <!-- Left Side (Welcome Text + Buttons) -->
+<div class="md:w-1/2 w-full p-8 md:p-16 flex flex-col justify-center text-center md:text-left">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">Welcome to NoteMate</h1>
+    <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+      Capture your thoughts, organize your ideas, and boost your productivity effortlessly. 
+      <span class="text-yellow-400">NoteMate</span> keeps all your notes safe, structured, 
+      and accessible anytime, anywhere.
+    </p>
+ <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+{% if not user.is_authenticated  %}
+   
+      <button 
+         class="openModalBtn-signUp bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 px-6 rounded-md shadow-md transition">
+         ✍️ Sign Up
+      </button>
+      <button 
+         class="openModalBtn-signIn border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold py-3 px-6 rounded-md shadow-md transition">
+         🔑 Sign In
+      </button>
+   
+    {% else %}
+    <a href="{% url 'users:sign-out' %}" class="openModalBtn-signIn border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold py-3 px-6 rounded-md shadow-md transition">Sign Out</a>
+{% endif %}
+ </div>
+
+</div>
+
+
+
+  <!-- Right Side (Illustration) -->
+  <div class="md:w-1/2 w-full flex justify-center items-center  p-8 md:p-0">
+    <img src="{% static 'logo/sign-up-sign-in/writing.png' %}" 
+         alt="Notebook Illustration"
+         class="w-3/4 md:w-2/3 lg:w-1/2 drop-shadow-2xl rounded-lg transform hover:scale-105 transition">
+  </div>
+
+</section>
