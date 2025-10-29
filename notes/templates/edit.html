@@ -7,7 +7,7 @@
     <!-- Modal Box -->
     <div class="bg-white rounded-xl shadow-lg p-6 space-y-4 max-w-md w-11/12 relative animate-scaleIn">
         <!-- Close Button -->
-        <a href='{% url "notes:edit" user.id %}'
+        <a href='{% url "notes:notes" %}'
                 class="absolute top-4 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold p-1 w-8 h-8 hover:bg-slate-300 border-2 rounded-sm shadow-md shadow-gray-200">
             <img src='{% static "image/square-x.svg" %}' class="w-8 h-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="" />
         </a>
@@ -16,7 +16,7 @@
         <h2 class="font-semibold text-2xl text-gray-700">Add New Note</h2>
 
         <!-- Form -->
-        <form id="noteForm" class="space-y-4" method="POST" >
+        <form id="noteForm"  class="space-y-4" method="POST" >
             {% csrf_token %}
             <div>{{edit_form.title}}</div>
             <div>{{edit_form.note}}</div>

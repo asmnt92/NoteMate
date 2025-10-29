@@ -13,6 +13,22 @@ if (addNoteBtn && closeBtn && noteFormWrapper) {
   });
 }
 
+// edit pop up ar jnno 
+
+// const addNoteBtn2 = document.getElementById("edit_btn");
+// const closeBtn2 = document.getElementById("closeBtn_edit");
+// const noteFormWrapper2 = document.getElementById("noteFormWrapper_edit");
+
+// if (addNoteBtn && closeBtn && noteFormWrapper) {
+//   addNoteBtn.addEventListener("click", () => {
+//     noteFormWrapper.classList.remove("hidden");
+//   });
+
+//   closeBtn.addEventListener("click", () => {
+//     noteFormWrapper.classList.add("hidden");
+//   });
+// }
+
 
 // Sign-In
 const showPassword_signIn = document.getElementById('showPassword-signIn');
