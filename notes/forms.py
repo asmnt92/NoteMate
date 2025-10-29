@@ -4,7 +4,7 @@ from notes.models import Notes
 class NotesForm(forms.ModelForm):
     class Meta:
         model=Notes
-        fields='__all__'
+        fields=['title', 'note']
         
         widgets={
             'title':forms.TextInput(attrs={

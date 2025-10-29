@@ -29,12 +29,15 @@ def dashboard(request):
 
 def edit(request,id): 
     if request.user.is_authenticated:
+        print('achi======')
         note=Notes.objects.get(id=id)
         editForm=NotesForm(instance=note)
-        notes=Notes.objects.all()
+        notes=Notes.objects.filter(user=request.user)
         if request.method=='POST':
+            print('vito88888888888')
             editForm=NotesForm(request.POST,instance=note)
             if editForm.is_valid():
+                print('***************************')
                 editForm.save()
                 return redirect('notes:notes')
             
