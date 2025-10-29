@@ -4,7 +4,7 @@
 
 
 <div id="signupModal-signUp" 
-     class="fixed inset-0 hidden bg-black/40 flex items-center justify-center z-50">
+     class="fixed inset-0 {% if not signUp %}hidden{% endif %} bg-black/40 flex items-center justify-center z-50">
   <!-- Modal Content -->
   <div class="bg-white shadow-xl rounded-xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden">
     

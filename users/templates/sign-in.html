@@ -3,7 +3,7 @@
 
 
 
-<div id="signupModal-signIn" class="fixed inset-0 hidden bg-black/40 flex items-center justify-center z-50">
+<div id="signupModal-signIn" class="fixed inset-0 {% if not signIn %}hidden{% endif %} bg-black/40 flex items-center justify-center z-50">
   <div class="relative m-4 mt-14 md:m-0 bg-gray-200 shadow-xl rounded-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
 
     <!-- Left Hero -->
@@ -59,7 +59,7 @@
 
       <p class="text-center text-gray-500 mt-4">
         Don't have an account?
-        <button class="openModalBtn-signUp text-blue-500 hover:underline">Sign In</button>
+        <button class="openModalBtn-signUp text-blue-500 hover:underline">Sign Up</button>
       </p>
     </div>
 

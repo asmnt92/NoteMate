@@ -9,14 +9,14 @@
 
       <div class="hidden md:flex space-x-6 font-medium">
          {% if user.is_authenticated %}
-        <a href="{% url 'home:guest-page' %}" class="block hover:text-yellow-400 transition">Home</a>
+        <a href="{% url 'home:guest-page'%}?signIn=False" class="block hover:text-yellow-400 transition">Home</a>
         <a href="{% url 'notes:notes' %}" class="block hover:text-yellow-400 transition">Dashboard</a>
         {% else %}
-        <a href="{% url 'home:guest-page' %}" class="block hover:text-yellow-400 transition">Home</a>
+        <a href="{% url 'home:guest-page' %}?signIn=False" class="block hover:text-yellow-400 transition">Home</a>
         {% endif %}
+        <a href="#about" class="hover:text-yellow-400 transition">About</a>
         <a href="#" class="hover:text-yellow-400 transition">Features</a>
         {% if not user.is_authenticated %}
-        <a href="#about" class="hover:text-yellow-400 transition">About</a>
         <button  class="openModalBtn-signIn hover:text-yellow-400 transition"  >Sign In</button>
         <button  class="openModalBtn-signUp hover:text-yellow-400 transition"  >Sign Up</button>
         {% else %}

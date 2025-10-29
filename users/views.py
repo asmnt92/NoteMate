@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
+from django.urls import reverse
 
 
 
 
 def sign_up(request):
+    url=reverse('home:guest-page')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -35,13 +37,14 @@ def sign_up(request):
 
         # User create (with hashed password) and save in data base
         User.objects.create_user(username=username, email=email, password=password)
-        
-
         messages.success(request, 'User created successfully!')
-        return redirect('users:sign-in')
-        
 
-    return render(request, 'home.html')
+        
+        return redirect(f"{url}?signIn=True")
+    
+    return redirect(f"{url}?signUp=True")
+
+    
 
 
 
@@ -63,12 +66,12 @@ def sign_in(request):
             return redirect('notes:notes')  
         else:
             messages.error(request, 'Incorrect password')
-            return redirect('users:sign-in')
+            return render(request, 'home.html',{'signIn':True})
 
-    return render(request, 'home.html')
+    url=reverse('home:guest-page')
+    return redirect(f"{url}?signIn=True")
 
 def sign_out(request):
-    
     logout(request)
-
-    return redirect('home:guest-page')
+    url=reverse('home:guest-page')
+    return redirect(f"{url}?signIn=True")

@@ -14,7 +14,7 @@ if (addNoteBtn && closeBtn && noteFormWrapper) {
 }
 
 
-// ✅ Sign-In
+// Sign-In
 const showPassword_signIn = document.getElementById('showPassword-signIn');
 const password_signIn = document.getElementById('password-signIn');
 
@@ -26,7 +26,7 @@ if (showPassword_signIn && password_signIn) {
 }
 
 
-// ✅ Sign-Up
+//  Sign-Up
 const showPassword = document.getElementById('showPassword');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm_password');
