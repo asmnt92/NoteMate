@@ -6,8 +6,8 @@
         <!-- Header -->
         <div class="flex items-center space-x-2">
             <div class="relative w-24 h-24">
-                <img src="{% static 'image/profile.jpg' %}" alt="Profile"
-                    class="w-full h-full rounded-full object-cover border-2 border-gray-300">
+                <img src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'image/profile.jpg' %}{% endif %}" alt="Profile Image" alt="Profile"
+                    class="w-full h-full rounded-full object-cover object-center border-2 border-gray-300">
                 <button
                     class="absolute bottom-0 right-0 bg-blue-500 text-white p-1 rounded-full border border-white hover:bg-blue-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
