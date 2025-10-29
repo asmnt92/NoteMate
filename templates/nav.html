@@ -1,0 +1,64 @@
+  {% load static %}
+  <nav class="bg-black text-white shadow-md fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-2">
+        <img src="{% static 'logo/sign-up-sign-in/writing.png' %}" alt="Logo" class="w-8 h-8">
+        <span class="text-xl font-bold">NoteMate</span>
+      </div>
+
+      <div class="hidden md:flex space-x-6 font-medium">
+         {% if user.is_authenticated %}
+        <a href="{% url 'home:guest-page'%}" class="block hover:text-yellow-400 transition">Home</a>
+        <a href="{% url 'notes:notes' %}" class="block hover:text-yellow-400 transition">Dashboard</a>
+        {% else %}
+        <a href="{% url 'home:guest-page' %}?signIn=False" class="block hover:text-yellow-400 transition">Home</a>
+        {% endif %}
+        <a href="#" class="hover:text-yellow-400 transition">Features</a>
+        {% if not user.is_authenticated %}
+        <a href="#about" class="hover:text-yellow-400 transition">About</a>
+        <button  class="openModalBtn-signIn hover:text-yellow-400 transition"  >Sign In</button>
+        <button  class="openModalBtn-signUp hover:text-yellow-400 transition"  >Sign Up</button>
+        {% else %}
+        <a href="#" class="hover:text-yellow-400 transition">⚙️ Settings</a>
+        <a href="{% url 'users:sign-out' %}" class="hover:text-yellow-400 transition">Sign Out</a>
+        {% endif %}
+
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button id="menu-btn" class="focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-black text-white px-4 py-3 space-y-2">
+    {% if user.is_authenticated %}
+    <a href="{% url 'notes:notes' %}" class="block hover:text-yellow-400 transition">Dashboard</a>
+    {% else %}
+    <a href="{% url 'home:guest-page' %}" class="block hover:text-yellow-400 transition">Home</a>
+    {% endif %}
+    
+    <a href="#" class="block hover:text-yellow-400 transition">Features</a>
+    <a href="#" class="block hover:text-yellow-400 transition">About</a>
+    <a href="{% url 'users:sign-in' %}" class="block hover:text-yellow-400 transition">Sign In</a>
+    <a href="{% url 'users:sign-up' %}" class="block hover:text-yellow-400 transition">Sign Up</a>
+    <hr class="border-gray-600">
+    <a href="#" class="block text-sm hover:text-yellow-400 transition">⚙️ Settings</a>
+  </div>
+</nav>
+
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>

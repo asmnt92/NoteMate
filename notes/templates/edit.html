@@ -1,0 +1,32 @@
+{% extends "dashboard.html" %}
+{% load static %}
+
+{% block edit_modal %}
+<div id="noteFormWrapper_edit"
+     class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <!-- Modal Box -->
+    <div class="bg-white rounded-xl shadow-lg p-6 space-y-4 max-w-md w-11/12 relative animate-scaleIn">
+        <!-- Close Button -->
+        <a href='{% url "notes:notes" %}'
+                class="absolute top-4 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold p-1 w-8 h-8 hover:bg-slate-300 border-2 rounded-sm shadow-md shadow-gray-200">
+            <img src='{% static "image/square-x.svg" %}' class="w-8 h-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="" />
+        </a>
+
+        <!-- Modal Title -->
+        <h2 class="font-semibold text-2xl text-gray-700">Add New Note</h2>
+
+        <!-- Form -->
+        <form id="noteForm"  class="space-y-4" method="POST" >
+            {% csrf_token %}
+            <div>{{edit_form.title}}</div>
+            <div>{{edit_form.note}}</div>
+            <div class="flex justify-end gap-2">
+                <button type="submit" id="saveBtn"
+                        class="px-4 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-500 transition">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock edit_modal %}
