@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.urls import reverse
+from django.contrib.auth.tokens import default_token_generator
 
 
 
@@ -36,8 +38,12 @@ def sign_up(request):
             return redirect('users:sign-up')  
 
         # User create (with hashed password) and save in data base
-        User.objects.create_user(username=username, email=email, password=password)
-        messages.success(request, 'User created successfully!')
+        user=User(username=username, email=email,is_active=False)
+        user.set_password(password)
+        user.save()
+        print(user)
+        messages.success(request, 'Account created! Please verify your email before login.')
+
 
         
         return redirect(f"{url}?signIn=True")
@@ -75,3 +81,19 @@ def sign_out(request):
     logout(request)
     url=reverse('home:guest-page')
     return redirect(f"{url}?signIn=True")
+
+
+def activate_user(request,id,token):
+    try:
+        user=User.objects.get(id=id)
+        if default_token_generator.check_token(user,token):
+            user.is_active=True
+            user.save()
+
+            url=reverse('home:guest-page')
+            return redirect(f"{url}?signIn=True")
+        else:
+            return HttpResponse('Invalid token')
+        
+    except User.DoesNotExist:
+        return HttpResponse('User not found')
